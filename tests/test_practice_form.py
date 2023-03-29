@@ -62,7 +62,5 @@ def test_practice_form(setup_browser):
                              )
         )
 
-    #with allure.step('Закрыть форму подтвержления регистрации'):
-        #browser.element('#closeLargeModal').click()
 
 
