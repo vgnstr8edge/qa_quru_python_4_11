@@ -35,7 +35,7 @@ def test_practice_form(setup_browser):
         browser.element('[for=hobbies-checkbox-3]').should(have.text('Music')).click()
 
     with allure.step('Загрузить фото'):
-        browser.element('#uploadPicture').send_keys((os.getcwd() + 'qa_quru_python_4_11_jenkins/resources/pic.png'))
+        browser.element('#uploadPicture').send_keys((os.getcwd() + '/resources/pic.png'))
 
     with allure.step('Указать место жительства: адрес, город, штат'):
         browser.element('#currentAddress').should(be.blank).type('Pushkina str')
