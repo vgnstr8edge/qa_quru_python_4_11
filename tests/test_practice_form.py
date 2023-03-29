@@ -18,8 +18,10 @@ def test_practice_form(setup_browser):
     with allure.step('Заполнить почту'):
         browser.element('#userEmail').should(be.blank).type('test@mail.com')
 
-    with allure.step('Заполнить контакты: почта и номер телефона'):
+    with allure.step('Заполнить поле "гендер"'):
         browser.element('[for=gender-radio-1]').should(have.text('Male')).click()
+
+    with allure.step('Заполнить номер телефона'):
         browser.element('#userNumber').should(be.blank).type('89260010101')
 
     with allure.step('Заполнить дату рождения'):
@@ -48,16 +50,16 @@ def test_practice_form(setup_browser):
         browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
         browser.element('.table').all('td').even.should(
             have.exact_texts('Dima Nasedkin',
-                            'test@mail.com',
-                            'Male',
-                            '8926001010',
-                            '21 June,2000',
-                            'Accounting',
-                            'Music',
-                            'pic.png',
-                            'Pushkina str',
-                            'Haryana Karnal'
-                            )
+                             'test@mail.com',
+                             'Male',
+                             '8926001010',
+                             '21 June,2000',
+                             'Accounting',
+                             'Music',
+                             'pic.png',
+                             'Pushkina str',
+                             'Haryana Karnal'
+                             )
         )
 
     with allure.step('Закрыть форму подтвержления регистрации'):
