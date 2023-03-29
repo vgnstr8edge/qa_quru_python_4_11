@@ -36,6 +36,7 @@ def test_practice_form(setup_browser):
 
     with allure.step('Загрузить фото'):
         browser.element('#uploadPicture').send_keys((os.getcwd() + '/resources/pic.png'))
+        browser.config.timeout = 6.0
 
     with allure.step('Указать место жительства: адрес, город, штат'):
         browser.element('#currentAddress').should(be.blank).type('Pushkina str')
