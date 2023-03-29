@@ -1,10 +1,28 @@
 from selene import browser, be, have
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import os
 import allure
 from utils import attach
 
 
 def test_practice_form(browser_settings):
+    options = Options()
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": "100.0",
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": True
+        }
+    }
+    options.capabilities.update(selenoid_capabilities)
+
+    driver = webdriver.Remote(
+        command_executor="http://user1:1234@selenoid.autotests.cloud/wd/hub",
+        options=options)
+    browser.config.driver = driver
+
     with allure.step('Заполнить имя\фамилию'):
         browser.element('#firstName').should(be.blank).type('Dima')
         browser.element('#lastName').should(be.blank).type('Nasedkin')
