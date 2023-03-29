@@ -1,3 +1,5 @@
+.env
+
 #Allure
 tests/allure-results
 
