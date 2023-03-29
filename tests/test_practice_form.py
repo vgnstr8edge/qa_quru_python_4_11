@@ -20,25 +20,22 @@ def test_practice_form(browser_settings):
     browser.element('#react-select-4-input').should(be.blank).type('Karnal').press_enter()
     browser.element('#submit').click()
 
-#проверка данных
+    # проверка данных
 
     browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
 
-    browser.element('tr:nth-child(1) td:nth-child(2)').should(have.text('Dima Nasedkin'))
-    browser.element('tr:nth-child(2) td:nth-child(2)').should(have.text('test@mail.com'))
-    browser.element('tr:nth-child(3) td:nth-child(2)').should(have.text('Male'))
-    browser.element('tr:nth-child(4) td:nth-child(2)').should(have.text('8926001010'))
-    browser.element('tr:nth-child(5) td:nth-child(2)').should(have.text('21 June,2000'))
-    browser.element('tr:nth-child(6) td:nth-child(2)').should(have.text('Accounting'))
-    browser.element('tr:nth-child(7) td:nth-child(2)').should(have.text('Music'))
-    browser.element('tr:nth-child(8) > td:nth-child(2)').should(have.text('pic.png'))
-    browser.element('tr:nth-child(9) td:nth-child(2)').should(have.text('Pushkina str'))
-    browser.element('tr:nth-child(10) td:nth-child(2)').should(have.text('Haryana Karnal'))
+    browser.element('.table').all('td').even.should(
+        have.exact_texts('Dima Nasedkin',
+                         'test@mail.com',
+                         'Male',
+                         '8926001010',
+                         '21 June,2000',
+                         'Accounting',
+                         'Music',
+                         'pic.png',
+                         'Pushkina str',
+                         'Haryana Karnal'
+                         )
+    )
 
     browser.element('#closeLargeModal').click()
-
-
-
-
-
-
